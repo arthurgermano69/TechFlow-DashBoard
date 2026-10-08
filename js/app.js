@@ -58,3 +58,84 @@ isDesktop.addEventListener('change', () => setSidebar(false));
 
 // Estado inicial
 setSidebar(false);
+
+
+// DROPDOWN DO USUÁRIO
+
+const userMenuButton = document.getElementById('user-menu-button');
+const userMenu = document.getElementById('user-menu');
+
+const getMenuItems = () => [...userMenu.querySelectorAll('[role="menuitem"]')];
+const isMenuOpen = () => userMenuButton.getAttribute('aria-expanded') === 'true';
+
+function setUserMenu(open, { returnFocus = false } = {}) {
+  // Fechado: invisível, menor e transparente. Aberto: cresce a partir do botão
+  userMenu.classList.toggle('invisible', !open);
+  userMenu.classList.toggle('opacity-0', !open);
+  userMenu.classList.toggle('scale-95', !open);
+  userMenu.classList.toggle('visible', open);
+  userMenu.classList.toggle('opacity-100', open);
+  userMenu.classList.toggle('scale-100', open);
+
+  userMenuButton.setAttribute('aria-expanded', String(open));
+
+  if (open) getMenuItems()[0]?.focus();
+  else if (returnFocus) userMenuButton.focus();
+}
+
+// Abre/fecha pelo botão
+userMenuButton.addEventListener('click', () => setUserMenu(!isMenuOpen()));
+
+// Clicar fora fecha (já na hora do toque, sem esperar soltar)
+document.addEventListener('pointerdown', (e) => {
+  if (!isMenuOpen()) return;
+  if (userMenu.contains(e.target) || userMenuButton.contains(e.target)) return;
+  setUserMenu(false);
+});
+
+// Clicar em um item fecha o menu
+getMenuItems().forEach((item) => {
+  item.addEventListener('click', () => setUserMenu(false));
+});
+
+// Teclado: Esc, setas, Home, End e Tab
+userMenu.addEventListener('keydown', (e) => {
+  const items = getMenuItems();
+  const index = items.indexOf(document.activeElement);
+
+  switch (e.key) {
+    case 'ArrowDown':
+      e.preventDefault();
+      items[(index + 1) % items.length].focus();
+      break;
+    case 'ArrowUp':
+      e.preventDefault();
+      items[(index - 1 + items.length) % items.length].focus();
+      break;
+    case 'Home':
+      e.preventDefault();
+      items[0].focus();
+      break;
+    case 'End':
+      e.preventDefault();
+      items[items.length - 1].focus();
+      break;
+    case 'Escape':
+      setUserMenu(false, { returnFocus: true });
+      break;
+    case 'Tab':
+      setUserMenu(false);
+      break;
+  }
+});
+
+// Abrir com seta para baixo quando o foco está no botão
+userMenuButton.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    setUserMenu(true);
+  }
+});
+
+// Estado inicial
+setUserMenu(false);

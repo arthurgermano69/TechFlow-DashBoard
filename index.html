@@ -575,7 +575,180 @@
         </div>
       </main>
     </div>
+        <!-- MODAL: NOVO PROJETO -->
+    <dialog
+      id="project-modal"
+      aria-labelledby="project-modal-title"
+      class="m-auto mb-0 max-h-[calc(100dvh-1rem)] w-full max-w-full translate-y-8 scale-95 overflow-hidden rounded-t-3xl border border-black/5 bg-white/90 p-0 text-slate-900 opacity-0 shadow-2xl backdrop-blur-xl backdrop-saturate-150 transition-all duration-300 ease-out backdrop:bg-slate-950/40 backdrop:opacity-0 backdrop:backdrop-blur-sm backdrop:transition-opacity backdrop:duration-300 data-[open=true]:translate-y-0 data-[open=true]:scale-100 data-[open=true]:opacity-100 data-[open=true]:backdrop:opacity-100 sm:mb-auto sm:max-w-lg sm:rounded-3xl dark:border-white/10 dark:bg-slate-900/90 dark:text-slate-100"
+    >
 
+      <!-- Tela 1: formulário -->
+      <div id="project-form-view" class="flex max-h-[inherit] flex-col">
+
+        <div class="flex shrink-0 items-start justify-between gap-4 border-b border-black/5 px-6 py-5 dark:border-white/10">
+          <div>
+            <h2 id="project-modal-title" class="text-xl font-semibold">Novo projeto</h2>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Preencha os dados para cadastrar um projeto.</p>
+          </div>
+          <button
+            id="project-modal-close"
+            type="button"
+            aria-label="Fechar"
+            class="flex size-9 shrink-0 items-center justify-center rounded-xl text-slate-500 transition-all duration-200 hover:bg-slate-100 hover:text-slate-900 active:scale-90 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30 disabled:cursor-not-allowed disabled:opacity-50 dark:text-slate-400 dark:hover:bg-white/10 dark:hover:text-white"
+          >
+            <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <form id="project-form" novalidate class="flex min-h-0 flex-1 flex-col">
+          <div id="project-form-body" class="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto px-6 py-5">
+
+            <!-- Nome -->
+            <div data-field="name">
+              <div class="mb-1.5 flex items-center justify-between">
+                <label for="project-name" class="field-label">Nome do projeto</label>
+                <svg data-success-icon class="hidden size-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+              </div>
+              <input id="project-name" name="name" type="text" maxlength="60" autocomplete="off" placeholder="Ex.: Plataforma TechFlow 2.0" aria-describedby="name-error" class="field-control" />
+              <p id="name-error" data-error role="alert" class="field-error hidden"></p>
+            </div>
+
+            <!-- Responsável e Categoria -->
+            <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+
+              <div data-field="owner">
+                <div class="mb-1.5 flex items-center justify-between">
+                  <label for="project-owner" class="field-label">Responsável</label>
+                  <svg data-success-icon class="hidden size-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+                </div>
+                <select id="project-owner" name="owner" aria-describedby="owner-error" class="field-control">
+                  <option value="">Selecione...</option>
+                  <option value="Arthur Germano">Arthur Germano</option>
+                  <option value="Maria Ribeiro">Maria Ribeiro</option>
+                  <option value="João Silva">João Silva</option>
+                  <option value="Lucas Pereira">Lucas Pereira</option>
+                  <option value="Carla Ferreira">Carla Ferreira</option>
+                </select>
+                <p id="owner-error" data-error role="alert" class="field-error hidden"></p>
+              </div>
+
+              <div data-field="category">
+                <div class="mb-1.5 flex items-center justify-between">
+                  <label for="project-category" class="field-label">Categoria</label>
+                  <svg data-success-icon class="hidden size-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+                </div>
+                <select id="project-category" name="category" aria-describedby="category-error" class="field-control">
+                  <option value="">Selecione...</option>
+                  <option value="Desenvolvimento">Desenvolvimento</option>
+                  <option value="Design">Design</option>
+                  <option value="Marketing">Marketing</option>
+                  <option value="Infraestrutura">Infraestrutura</option>
+                  <option value="Dados">Dados</option>
+                  <option value="Segurança">Segurança</option>
+                  <option value="Mobile">Mobile</option>
+                </select>
+                <p id="category-error" data-error role="alert" class="field-error hidden"></p>
+              </div>
+
+            </div>
+
+            <!-- Prioridade -->
+            <div data-field="priority" role="radiogroup" aria-labelledby="priority-label" aria-describedby="priority-error" class="group">
+              <div class="mb-1.5 flex items-center justify-between">
+                <span id="priority-label" class="field-label">Prioridade</span>
+                <svg data-success-icon class="hidden size-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+              </div>
+
+              <div class="grid grid-cols-3 gap-2">
+                <label class="cursor-pointer">
+                  <input type="radio" name="priority" value="Baixa" class="peer sr-only" />
+                  <span class="choice peer-checked:border-emerald-500 peer-checked:bg-emerald-50 peer-checked:text-emerald-700 dark:peer-checked:bg-emerald-500/15 dark:peer-checked:text-emerald-300">
+                    <span class="size-2 rounded-full bg-emerald-500"></span>Baixa
+                  </span>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="priority" value="Média" class="peer sr-only" />
+                  <span class="choice peer-checked:border-amber-500 peer-checked:bg-amber-50 peer-checked:text-amber-700 dark:peer-checked:bg-amber-500/15 dark:peer-checked:text-amber-300">
+                    <span class="size-2 rounded-full bg-amber-500"></span>Média
+                  </span>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="priority" value="Alta" class="peer sr-only" />
+                  <span class="choice peer-checked:border-red-500 peer-checked:bg-red-50 peer-checked:text-red-700 dark:peer-checked:bg-red-500/15 dark:peer-checked:text-red-300">
+                    <span class="size-2 rounded-full bg-red-500"></span>Alta
+                  </span>
+                </label>
+              </div>
+              <p id="priority-error" data-error role="alert" class="field-error hidden"></p>
+            </div>
+
+            <!-- Prazo -->
+            <div data-field="deadline">
+              <div class="mb-1.5 flex items-center justify-between">
+                <label for="project-deadline" class="field-label">Prazo</label>
+                <svg data-success-icon class="hidden size-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+              </div>
+              <input id="project-deadline" name="deadline" type="date" aria-describedby="deadline-error" class="field-control" />
+              <p id="deadline-error" data-error role="alert" class="field-error hidden"></p>
+            </div>
+
+            <!-- Descrição -->
+            <div data-field="description">
+              <div class="mb-1.5 flex items-center justify-between">
+                <label for="project-description" class="field-label">Descrição</label>
+                <svg data-success-icon class="hidden size-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+              </div>
+              <textarea id="project-description" name="description" rows="3" maxlength="200" placeholder="Descreva o objetivo do projeto em poucas linhas." aria-describedby="description-error" class="field-control resize-none"></textarea>
+              <div class="flex items-start justify-between gap-3">
+                <p id="description-error" data-error role="alert" class="field-error hidden"></p>
+                <span id="description-count" class="ml-auto mt-1.5 text-xs tabular-nums text-slate-500 dark:text-slate-400">0/200</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Rodapé com os botões -->
+          <div class="flex shrink-0 flex-col-reverse gap-3 border-t border-black/5 px-6 pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 sm:flex-row sm:justify-end dark:border-white/10">
+            <button
+              id="project-cancel"
+              type="button"
+              class="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-700 transition-all duration-200 hover:bg-slate-100 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30 disabled:cursor-not-allowed disabled:opacity-50 dark:text-slate-200 dark:hover:bg-white/10"
+            >
+              Cancelar
+            </button>
+            <button
+              id="project-submit"
+              type="submit"
+              class="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30 enabled:hover:bg-blue-700 enabled:active:scale-95 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              <svg id="project-submit-spinner" class="hidden size-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-6.2-8.55"/></svg>
+              <span id="project-submit-label">Criar projeto</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tela 2: sucesso -->
+      <div id="project-success-view" aria-live="polite" class="hidden flex-col items-center gap-5 px-6 py-10 text-center">
+        <span id="success-icon" class="flex size-16 scale-50 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 opacity-0 transition-all duration-500 ease-out dark:bg-emerald-500/15 dark:text-emerald-400">
+          <svg class="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+        </span>
+        <div>
+          <h2 class="text-xl font-semibold">Projeto criado!</h2>
+          <p class="mt-1 text-sm text-slate-600 dark:text-slate-400"><strong id="success-name" class="font-semibold text-slate-900 dark:text-white"></strong> foi cadastrado com sucesso.</p>
+        </div>
+        <div class="flex w-full flex-col-reverse gap-3 sm:w-auto sm:flex-row">
+          <button id="project-create-another" type="button" class="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-700 transition-all duration-200 hover:bg-slate-100 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30 dark:text-slate-200 dark:hover:bg-white/10">
+            Criar outro
+          </button>
+          <button id="project-done" type="button" class="rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-blue-700 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30">
+            Concluir
+          </button>
+        </div>
+      </div>
+
+    </dialog>
     <script type="module" src="/js/app.js"></script>
+
   </body>
 </html>

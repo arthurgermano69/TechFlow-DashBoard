@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechFlow Dashboard</title>
-        <!-- Aplica o tema salvo ANTES de renderizar (evita o "flash" branco no modo escuro) -->
+
+    <!-- Aplica o tema salvo ANTES de renderizar (evita o "flash" branco no modo escuro) -->
     <script>
       (function () {
         try {
@@ -17,6 +18,7 @@
         } catch (e) {}
       })();
     </script>
+
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
 
@@ -172,7 +174,7 @@
               Configurações
             </a>
 
-                        <div class="my-1 h-px bg-black/5 dark:bg-white/10"></div>
+            <div class="my-1 h-px bg-black/5 dark:bg-white/10"></div>
 
             <!-- Seletor de tema -->
             <div class="px-3 py-2" role="group" aria-labelledby="theme-label">
@@ -225,7 +227,7 @@
         <div class="mx-auto flex max-w-7xl flex-col gap-8 2xl:max-w-screen-2xl">
 
           <!-- Cabeçalho da página -->
-          <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div class="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
             <div>
               <h1 class="text-3xl font-semibold sm:text-4xl">Visão geral</h1>
               <p class="mt-1 text-slate-600 dark:text-slate-400">Acompanhe seus projetos, equipes e indicadores.</p>
@@ -302,7 +304,7 @@
           <section id="projetos" aria-labelledby="titulo-projetos" class="scroll-mt-24">
             <div class="mb-4 flex items-baseline justify-between">
               <h2 id="titulo-projetos" class="text-xl font-semibold">Projetos</h2>
-              <p class="text-sm text-slate-500 dark:text-slate-400">7 projetos</p>
+              <p id="projects-count" aria-live="polite" class="text-sm text-slate-500 dark:text-slate-400">7 projetos</p>
             </div>
 
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:auto-rows-[minmax(13rem,auto)] lg:grid-cols-3 xl:grid-cols-4 2xl:gap-6">
@@ -352,7 +354,7 @@
                   </div>
 
                   <div class="flex items-center justify-between">
-                    <div class="flex -space-x-2">
+                    <div class="flex -space-x-1">
                       <span class="flex size-8 items-center justify-center rounded-full bg-emerald-500 text-[11px] font-semibold ring-2 ring-indigo-600">AG</span>
                       <span class="flex size-8 items-center justify-center rounded-full bg-amber-500 text-[11px] font-semibold ring-2 ring-indigo-600">MR</span>
                       <span class="flex size-8 items-center justify-center rounded-full bg-pink-500 text-[11px] font-semibold ring-2 ring-indigo-600">JS</span>
@@ -390,7 +392,7 @@
                     </div>
                   </div>
                   <div class="flex items-center justify-between">
-                    <div class="flex -space-x-2">
+                    <div class="flex -space-x-1">
                       <span class="flex size-7 items-center justify-center rounded-full bg-blue-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">LP</span>
                       <span class="flex size-7 items-center justify-center rounded-full bg-violet-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">CF</span>
                     </div>
@@ -424,7 +426,7 @@
                     </div>
                   </div>
                   <div class="flex items-center justify-between">
-                    <div class="flex -space-x-2">
+                    <div class="flex -space-x-1">
                       <span class="flex size-7 items-center justify-center rounded-full bg-pink-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">JS</span>
                       <span class="flex size-7 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">AG</span>
                     </div>
@@ -458,7 +460,7 @@
                     </div>
                   </div>
                   <div class="flex items-center justify-between">
-                    <div class="flex -space-x-2">
+                    <div class="flex -space-x-1">
                       <span class="flex size-7 items-center justify-center rounded-full bg-amber-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">MR</span>
                       <span class="flex size-7 items-center justify-center rounded-full bg-blue-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">LP</span>
                       <span class="flex size-7 items-center justify-center rounded-full bg-violet-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">CF</span>
@@ -493,7 +495,7 @@
                     </div>
                   </div>
                   <div class="flex items-center justify-between">
-                    <div class="flex -space-x-2">
+                    <div class="flex -space-x-1">
                       <span class="flex size-7 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">AG</span>
                       <span class="flex size-7 items-center justify-center rounded-full bg-amber-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">MR</span>
                     </div>
@@ -527,7 +529,7 @@
                     </div>
                   </div>
                   <div class="flex items-center justify-between">
-                    <div class="flex -space-x-2">
+                    <div class="flex -space-x-1">
                       <span class="flex size-7 items-center justify-center rounded-full bg-violet-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">CF</span>
                     </div>
                     <span class="text-xs text-slate-500 dark:text-slate-400">Prazo: 28 fev</span>
@@ -560,7 +562,7 @@
                     </div>
                   </div>
                   <div class="flex items-center justify-between">
-                    <div class="flex -space-x-2">
+                    <div class="flex -space-x-1">
                       <span class="flex size-7 items-center justify-center rounded-full bg-blue-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">LP</span>
                       <span class="flex size-7 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">AG</span>
                     </div>
@@ -570,12 +572,24 @@
               </article>
 
             </div>
+
+            <!-- Estado vazio da pesquisa -->
+            <div id="projects-empty" hidden class="flex flex-col items-center gap-2 rounded-2xl border border-dashed border-slate-300 px-6 py-14 text-center transition duration-300 ease-out dark:border-white/15">
+              <svg class="size-10 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <p class="font-semibold">Nenhum projeto encontrado</p>
+              <p class="text-sm text-slate-600 dark:text-slate-400">Não há resultados para “<span id="projects-empty-term" class="font-medium"></span>”. Tente outro termo.</p>
+              <button id="projects-empty-clear" type="button" class="mt-2 rounded-xl px-4 py-2 text-sm font-semibold text-blue-600 transition-all duration-200 hover:bg-blue-50 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30 dark:text-blue-400 dark:hover:bg-blue-500/10">
+                Limpar pesquisa
+              </button>
+            </div>
+
           </section>
 
         </div>
       </main>
     </div>
-        <!-- MODAL: NOVO PROJETO -->
+
+    <!-- MODAL: NOVO PROJETO -->
     <dialog
       id="project-modal"
       aria-labelledby="project-modal-title"
@@ -748,7 +762,7 @@
       </div>
 
     </dialog>
-    <script type="module" src="/js/app.js"></script>
 
+    <script type="module" src="/js/app.js"></script>
   </body>
 </html>

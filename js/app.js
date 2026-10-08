@@ -455,3 +455,67 @@ doneButton.addEventListener('click', closeModal);
 
 // Sempre que o modal fecha, deixa o formulário limpo para a próxima vez
 modal.addEventListener('close', resetProjectForm);
+
+
+// PESQUISA DE PROJETOS
+
+const searchInput = document.getElementById('search');
+const projectGrid = document.querySelector('#projetos .grid');
+const projectsCount = document.getElementById('projects-count');
+const projectsEmpty = document.getElementById('projects-empty');
+const projectsEmptyTerm = document.getElementById('projects-empty-term');
+const projectsEmptyClear = document.getElementById('projects-empty-clear');
+
+// Minúsculas e sem acentos: "seguranca" encontra "Segurança"
+const normalize = (text) =>
+  text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+// Indexa uma vez: categoria + título + descrição de cada card
+const searchIndex = [...projectGrid.children].map((card) => ({
+  card,
+  text: normalize(
+    [
+      card.querySelector('span')?.textContent, // categoria
+      card.querySelector('h3')?.textContent,   // título
+      card.querySelector('p')?.textContent,    // descrição
+    ].join(' ')
+  ),
+}));
+
+function filterProjects() {
+  const raw = searchInput.value.trim();
+  const query = normalize(raw);
+  let visible = 0;
+
+  searchIndex.forEach(({ card, text }) => {
+    const match = text.includes(query);
+    card.hidden = !match;
+    if (match) visible++;
+  });
+
+  const total = searchIndex.length;
+  projectsCount.textContent = query
+    ? `${visible} de ${total} projetos`
+    : `${total} projetos`;
+
+  projectGrid.hidden = visible === 0;
+  projectsEmpty.hidden = visible !== 0;
+  projectsEmptyTerm.textContent = raw;
+}
+
+searchInput.addEventListener('input', filterProjects);
+
+projectsEmptyClear.addEventListener('click', () => {
+  searchInput.value = '';
+  filterProjects();
+  searchInput.focus();
+});
+
+// Atalho: "/" foca a pesquisa (quando você não está digitando em outro campo)
+document.addEventListener('keydown', (e) => {
+  if (e.key !== '/' || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
+  if (modal.open) return;
+  e.preventDefault();
+  searchInput.focus();
+});

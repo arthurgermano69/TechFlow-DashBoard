@@ -519,3 +519,33 @@ document.addEventListener('keydown', (e) => {
   e.preventDefault();
   searchInput.focus();
 });
+
+// ENTRADA DOS CARDS E BARRAS DE PROGRESSO
+
+const revealTargets = document.querySelectorAll(
+  '#indicadores article, #projetos .grid > article'
+);
+
+revealTargets.forEach((el, i) => {
+  el.style.setProperty('--i', i); // atraso escalonado
+  el.classList.add('reveal');
+  // Depois de entrar, a animação sai do caminho (hover/active seguem normais)
+  el.addEventListener(
+    'animationend',
+    (e) => {
+      if (e.target === el) el.classList.remove('reveal');
+    },
+    { once: true }
+  );
+});
+
+// As barras começam vazias e preenchem até o valor real
+document.querySelectorAll('[role="progressbar"] > div').forEach((bar) => {
+  const target = bar.style.width;
+  bar.style.width = '0%';
+  requestAnimationFrame(() =>
+    requestAnimationFrame(() => {
+      bar.style.width = target;
+    })
+  );
+});

@@ -4,7 +4,7 @@ Dashboard responsivo para acompanhar projetos, equipes e indicadores da empresa 
 
 🔗 **Repositório:** https://github.com/arthurgermano69/TechFlow-DashBoard
 
-## 👥 Integrantes
+## Integrantes
 
 | Nome | RM |
 | --- | --- |
@@ -12,7 +12,7 @@ Dashboard responsivo para acompanhar projetos, equipes e indicadores da empresa 
 | João Pedro De Souza | rm571437 |
 
 
-## 🛠️ Tecnologias utilizadas
+## Tecnologias utilizadas
 
 - **HTML5** semântico (`header`, `aside`, `nav`, `main`, `section`, `article`, `dialog`)
 - **Tailwind CSS v4** (via plugin oficial `@tailwindcss/vite`)
@@ -20,7 +20,7 @@ Dashboard responsivo para acompanhar projetos, equipes e indicadores da empresa 
 - **Vite** como ferramenta de desenvolvimento e build
 - **Git e GitHub** para versionamento, com commits semânticos
 
-## ✨ Principais recursos implementados
+## Principais recursos implementados
 
 ### Telas
 - **Dashboard** com navbar, sidebar, campo de pesquisa, informações do usuário, 4 cards de indicadores e feed com 7 projetos.
@@ -71,7 +71,7 @@ Para gerar a versão de produção:
 npm run build
 ```
 
-## 📁 Estrutura do projeto
+## Estrutura do projeto
 
 ```
 techflow-dashboard/
@@ -86,9 +86,9 @@ techflow-dashboard/
 └── README.md
 ```
 
-## 🧗 Dificuldades encontradas
+## Dificuldades encontradas
 
-⚠️ **Revise esta seção e deixe só o que realmente aconteceu com o grupo.**
+**Revise esta seção e deixe só o que realmente aconteceu com o grupo.**
 
 - **Configurar o Tailwind v4:** a versão nova não usa mais `tailwind.config.js`. Foi preciso entender o plugin do Vite e a diretiva `@custom-variant` para o `dark:` funcionar por classe, e não só pela preferência do sistema.
 - **Grid sem espaços vazios:** combinar `col-span` e `row-span` para o grid fechar certinho em todos os breakpoints exigiu calcular o número de colunas de cada tamanho de tela.

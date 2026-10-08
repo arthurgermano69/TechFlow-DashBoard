@@ -54,7 +54,7 @@ Dashboard responsivo para acompanhar projetos, equipes e indicadores da empresa 
 - Suporte a `prefers-reduced-motion`, `prefers-reduced-transparency` e `prefers-contrast`.
 - Navegação completa por teclado, `aria-*` nos componentes interativos e foco visível.
 
-## 🚀 Como executar
+## Como executar
 
 ```bash
 git clone https://github.com/arthurgermano69/TechFlow-DashBoard.git

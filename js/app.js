@@ -208,3 +208,53 @@ window.addEventListener('storage', (e) => {
 const initialTheme = getStoredTheme();
 applyTheme(initialTheme);
 syncThemeInputs(initialTheme);
+
+/* ----------------------------------------------------------
+   MODAL: NOVO PROJETO (abrir e fechar)
+   ---------------------------------------------------------- */
+const modal = document.getElementById('project-modal');
+const openModalButton = document.getElementById('open-project-modal');
+const modalCloseButton = document.getElementById('project-modal-close');
+const cancelButton = document.getElementById('project-cancel');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+let closeTimer = null;
+let isSubmitting = false;
+
+function openModal() {
+  clearTimeout(closeTimer); // se estava fechando, cancela e volta de onde estava
+  if (!modal.open) modal.showModal();
+  void modal.offsetWidth; // registra o estado "fechado" antes de animar a abertura
+  modal.dataset.open = 'true';
+  document.documentElement.classList.add('overflow-hidden'); // trava a rolagem da página
+}
+
+function closeModal() {
+  if (isSubmitting) return;
+  modal.dataset.open = 'false'; // dispara a animação de saída
+
+  closeTimer = setTimeout(() => {
+    modal.close();
+    document.documentElement.classList.remove('overflow-hidden');
+  }, reducedMotion.matches ? 0 : 300);
+}
+
+openModalButton.addEventListener('click', openModal);
+modalCloseButton.addEventListener('click', closeModal);
+cancelButton.addEventListener('click', closeModal);
+
+// Esc: usa a nossa animação de saída em vez do fechamento seco do navegador
+modal.addEventListener('cancel', (e) => {
+  e.preventDefault();
+  closeModal();
+});
+
+// Clique no fundo escuro fecha, mas só se o clique COMEÇOU no fundo
+// (evita fechar ao arrastar para selecionar texto de um campo)
+let pressStartedOnBackdrop = false;
+modal.addEventListener('pointerdown', (e) => {
+  pressStartedOnBackdrop = e.target === modal;
+});
+modal.addEventListener('click', (e) => {
+  if (e.target === modal && pressStartedOnBackdrop) closeModal();
+});

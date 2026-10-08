@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* Dark mode controlado por JS: a classe "dark" no <html> ativa a variante dark: */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  html {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  /* Tipografia (apple-design): títulos com tracking negativo e leading curto */
+  
+  h1, h2, h3 {
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+}
+
+/* Acessibilidade (apple-design): respeita quem reduz movimento no sistema */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

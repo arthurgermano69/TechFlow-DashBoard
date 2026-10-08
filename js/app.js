@@ -100,6 +100,9 @@ getMenuItems().forEach((item) => {
 
 // Teclado: Esc, setas, Home, End e Tab
 userMenu.addEventListener('keydown', (e) => {
+  // Nos botões de tema, as setas trocam de opção (comportamento nativo do rádio)
+  if (e.target.matches('input[type="radio"]') && e.key.startsWith('Arrow')) return;
+
   const items = getMenuItems();
   const index = items.indexOf(document.activeElement);
 
@@ -139,3 +142,69 @@ userMenuButton.addEventListener('keydown', (e) => {
 
 // Estado inicial
 setUserMenu(false);
+
+
+// TEMA: Light | Dark | System (com localStorage)
+const THEME_KEY = 'techflow-theme';
+const THEMES = ['light', 'dark', 'system'];
+const systemDark = window.matchMedia('(prefers-color-scheme: dark)');
+const themeInputs = document.querySelectorAll('input[name="theme"]');
+
+function getStoredTheme() {
+  try {
+    const saved = localStorage.getItem(THEME_KEY);
+    return THEMES.includes(saved) ? saved : 'system';
+  } catch {
+    return 'system'; // localStorage indisponível (ex: modo privado restrito)
+  }
+}
+
+function saveTheme(theme) {
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch {
+    /* sem armazenamento: o tema vale só nesta sessão */
+  }
+}
+
+// Liga/desliga a classe "dark" no <html>, que ativa as variantes dark: do Tailwind
+function applyTheme(theme) {
+  const dark = theme === 'dark' || (theme === 'system' && systemDark.matches);
+  document.documentElement.classList.toggle('dark', dark);
+}
+
+// Marca o botão de rádio correspondente
+function syncThemeInputs(theme) {
+  themeInputs.forEach((input) => {
+    input.checked = input.value === theme;
+  });
+}
+
+function setTheme(theme) {
+  applyTheme(theme);
+  saveTheme(theme);
+  syncThemeInputs(theme);
+}
+
+// Usuário escolhe um tema
+themeInputs.forEach((input) => {
+  input.addEventListener('change', () => setTheme(input.value));
+});
+
+// No modo System, acompanha o sistema operacional em tempo real
+systemDark.addEventListener('change', () => {
+  if (getStoredTheme() === 'system') applyTheme('system');
+});
+
+// Mantém várias abas abertas sincronizadas
+window.addEventListener('storage', (e) => {
+  if (e.key !== THEME_KEY) return;
+  const theme = getStoredTheme();
+  applyTheme(theme);
+  syncThemeInputs(theme);
+});
+
+// Estado inicial
+const initialTheme = getStoredTheme();
+applyTheme(initialTheme);
+syncThemeInputs(initialTheme);

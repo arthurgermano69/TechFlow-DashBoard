@@ -10,6 +10,7 @@
   <body class="min-h-screen bg-slate-50 text-slate-900 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
 
     <!-- Scrim (fundo escurecido) da sidebar no mobile -->
+    
     <div
       id="sidebar-overlay"
       class="pointer-events-none fixed inset-0 z-30 bg-slate-950/40 opacity-0 backdrop-blur-sm transition-opacity duration-300 lg:hidden"
@@ -17,12 +18,14 @@
     ></div>
 
     <!-- SIDEBAR -->
+    
     <aside
       id="sidebar"
       aria-label="Navegação principal"
       class="fixed inset-y-0 left-0 z-40 flex w-72 -translate-x-full flex-col border-r border-black/5 bg-white/80 backdrop-blur-xl backdrop-saturate-150 transition-transform duration-300 ease-out dark:border-white/10 dark:bg-slate-900/80 lg:translate-x-0"
     >
       <!-- Logo + botão fechar (mobile) -->
+      
       <div class="flex h-16 items-center justify-between px-5">
         <a href="#" class="flex items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30">
           <span class="flex size-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 text-lg font-bold text-white shadow-sm">T</span>
@@ -40,6 +43,7 @@
       </div>
 
       <!-- Navegação -->
+      
       <nav class="flex-1 overflow-y-auto px-3 py-4">
         <p class="mb-2 px-3 text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400">Menu</p>
 
@@ -83,18 +87,22 @@
       </nav>
 
       <!-- Rodapé da sidebar -->
+      
       <div class="border-t border-black/5 px-5 py-4 text-xs text-slate-500 dark:border-white/10 dark:text-slate-400">
         TechFlow Dashboard · v1.0
       </div>
     </aside>
 
     <!-- Coluna principal (deslocada pela sidebar no desktop) -->
+    
     <div class="lg:pl-72">
 
       <!-- NAVBAR -->
+      
       <header class="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-black/5 bg-white/70 px-4 backdrop-blur-xl backdrop-saturate-150 sm:px-6 lg:px-8 dark:border-white/10 dark:bg-slate-950/70">
 
         <!-- Botão do menu (só no mobile/tablet) -->
+        
         <button
           id="sidebar-toggle"
           type="button"
@@ -107,6 +115,7 @@
         </button>
 
         <!-- Campo de pesquisa -->
+        
         <form role="search" class="relative max-w-md flex-1" onsubmit="return false">
           <label for="search" class="sr-only">Pesquisar projetos</label>
           <input
@@ -119,6 +128,7 @@
         </form>
 
         <!-- Usuário + dropdown -->
+        
         <div class="relative ml-auto">
           <button
             id="user-menu-button"
@@ -137,6 +147,7 @@
           </button>
 
           <!-- Dropdown (estado fechado: invisível, pequeno e transparente) -->
+          
           <div
             id="user-menu"
             role="menu"
@@ -172,10 +183,12 @@
       </header>
 
       <!-- ÁREA PRINCIPAL -->
+      
       <main class="px-4 py-6 sm:px-6 sm:py-8 lg:px-8 2xl:px-12">
         <div class="mx-auto flex max-w-7xl flex-col gap-8 2xl:max-w-screen-2xl">
 
           <!-- Cabeçalho da página -->
+          
           <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h1 class="text-3xl font-semibold sm:text-4xl">Visão geral</h1>
@@ -186,25 +199,292 @@
               id="open-project-modal"
               type="button"
               class="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 ease-out hover:bg-blue-700 active:scale-95 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/30 disabled:cursor-not-allowed disabled:opacity-50"
-            >
+>
               <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
               Novo projeto
             </button>
           </div>
 
-          <!-- Indicadores (Etapa 4) -->
-          <section id="indicadores" aria-labelledby="titulo-indicadores">
-            <h2 id="titulo-indicadores" class="sr-only">Indicadores</h2>
-            <div class="rounded-2xl border border-dashed border-slate-300 p-8 text-center text-sm text-slate-500 dark:border-white/15 dark:text-slate-400">
-              Cards de indicadores (Etapa 4)
+            <!-- Indicadores -->
+          
+                      <!-- Projetos -->
+          <section id="projetos" aria-labelledby="titulo-projetos" class="scroll-mt-24">
+            <div class="mb-4 flex items-baseline justify-between">
+              <h2 id="titulo-projetos" class="text-xl font-semibold">Projetos</h2>
+              <p class="text-sm text-slate-500 dark:text-slate-400">7 projetos</p>
             </div>
-          </section>
 
-          <!-- Projetos (Etapa 4) -->
-          <section id="projetos" aria-labelledby="titulo-projetos">
-            <h2 id="titulo-projetos" class="mb-4 text-xl font-semibold">Projetos</h2>
-            <div class="rounded-2xl border border-dashed border-slate-300 p-8 text-center text-sm text-slate-500 dark:border-white/15 dark:text-slate-400">
-              Grid de projetos (Etapa 4)
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:auto-rows-[minmax(13rem,auto)] lg:grid-cols-3 xl:grid-cols-4 2xl:gap-6">
+
+              <!-- 1. DESTAQUE: md = 2 colunas | lg = 2 colunas x 2 linhas -->
+              
+              <article class="group relative flex flex-col justify-between gap-6 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 p-6 text-white shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/20 active:scale-[0.99] has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-blue-500/40 md:col-span-2 lg:row-span-2">
+                <div class="flex flex-col gap-4">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="rounded-full bg-white/20 px-2.5 py-1 text-xs font-medium">Desenvolvimento</span>
+                    <span class="flex items-center gap-1.5 text-xs font-medium text-white/90">
+                      <span class="size-2 rounded-full bg-red-300"></span>Alta prioridade
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3 class="text-2xl font-semibold sm:text-3xl">
+                      <a href="#" class="after:absolute after:inset-0 focus:outline-none">Plataforma TechFlow 2.0</a>
+                    </h3>
+                    <p class="mt-2 max-w-lg text-white/80">Nova versão da plataforma com autenticação unificada, pagamentos integrados e painel em tempo real para todos os clientes.</p>
+                  </div>
+
+                  <ul class="hidden flex-col gap-2 lg:flex">
+                    <li class="flex items-center gap-3 rounded-xl bg-white/10 px-3 py-2 text-sm backdrop-blur-sm">
+                      <svg class="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+                      Finalizar autenticação unificada
+                    </li>
+                    <li class="flex items-center gap-3 rounded-xl bg-white/10 px-3 py-2 text-sm backdrop-blur-sm">
+                      <svg class="size-4 shrink-0 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+                      Integrar API de pagamentos
+                    </li>
+                    <li class="flex items-center gap-3 rounded-xl bg-white/10 px-3 py-2 text-sm backdrop-blur-sm">
+                      <svg class="size-4 shrink-0 opacity-60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+                      Revisar testes de desempenho
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                  <div>
+                    <div class="mb-1.5 flex items-center justify-between text-xs">
+                      <span class="text-white/80">Progresso</span>
+                      <span class="font-semibold tabular-nums">72%</span>
+                    </div>
+                    <div class="h-2 overflow-hidden rounded-full bg-white/20" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso do projeto Plataforma TechFlow 2.0">
+                      <div class="h-full rounded-full bg-white transition-all duration-700 ease-out" style="width: 72%"></div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center justify-between">
+                    <div class="flex -space-x-2">
+                      <span class="flex size-8 items-center justify-center rounded-full bg-emerald-500 text-[11px] font-semibold ring-2 ring-indigo-600">AG</span>
+                      <span class="flex size-8 items-center justify-center rounded-full bg-amber-500 text-[11px] font-semibold ring-2 ring-indigo-600">MR</span>
+                      <span class="flex size-8 items-center justify-center rounded-full bg-pink-500 text-[11px] font-semibold ring-2 ring-indigo-600">JS</span>
+                    </div>
+                    <span class="flex items-center gap-2 text-sm text-white/90">
+                      Prazo: 28 nov
+                      <svg class="size-5 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 2. Pequeno (1x1) -->
+              
+              <article class="group relative flex flex-col justify-between gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.99] has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-blue-500/30 dark:border-white/10 dark:bg-slate-900 dark:hover:border-white/20">
+                <div class="flex flex-col gap-3">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="rounded-full bg-orange-50 px-2.5 py-1 text-xs font-medium text-orange-700 dark:bg-orange-500/15 dark:text-orange-300">Mobile</span>
+                    <span class="flex items-center gap-1.5 text-xs font-medium text-slate-600 dark:text-slate-400"><span class="size-2 rounded-full bg-amber-500"></span>Média</span>
+                  </div>
+                  <div>
+                    <h3 class="text-base font-semibold">
+                      <a href="#" class="transition-colors duration-200 after:absolute after:inset-0 focus:outline-none group-hover:text-blue-600 dark:group-hover:text-blue-400">App Mobile Clientes</a>
+                    </h3>
+                    <p class="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-slate-400">Aplicativo para acompanhar pedidos e abrir chamados direto do celular.</p>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <div>
+                    <div class="mb-1.5 flex items-center justify-between text-xs">
+                      <span class="text-slate-500 dark:text-slate-400">Progresso</span>
+                      <span class="font-semibold tabular-nums">45%</span>
+                    </div>
+                    <div class="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-white/10" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso do projeto App Mobile Clientes">
+                      <div class="h-full rounded-full bg-orange-500 transition-all duration-700 ease-out" style="width: 45%"></div>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <div class="flex -space-x-2">
+                      <span class="flex size-7 items-center justify-center rounded-full bg-blue-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">LP</span>
+                      <span class="flex size-7 items-center justify-center rounded-full bg-violet-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">CF</span>
+                    </div>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Prazo: 15 dez</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 3. Pequeno (1x1) -->
+              
+              <article class="group relative flex flex-col justify-between gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.99] has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-blue-500/30 dark:border-white/10 dark:bg-slate-900 dark:hover:border-white/20">
+                <div class="flex flex-col gap-3">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="rounded-full bg-violet-50 px-2.5 py-1 text-xs font-medium text-violet-700 dark:bg-violet-500/15 dark:text-violet-300">Design</span>
+                    <span class="flex items-center gap-1.5 text-xs font-medium text-slate-600 dark:text-slate-400"><span class="size-2 rounded-full bg-red-500"></span>Alta</span>
+                  </div>
+                  <div>
+                    <h3 class="text-base font-semibold">
+                      <a href="#" class="transition-colors duration-200 after:absolute after:inset-0 focus:outline-none group-hover:text-blue-600 dark:group-hover:text-blue-400">Redesign do Portal</a>
+                    </h3>
+                    <p class="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-slate-400">Nova identidade visual e navegação simplificada para o portal do cliente.</p>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <div>
+                    <div class="mb-1.5 flex items-center justify-between text-xs">
+                      <span class="text-slate-500 dark:text-slate-400">Progresso</span>
+                      <span class="font-semibold tabular-nums">88%</span>
+                    </div>
+                    <div class="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-white/10" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso do projeto Redesign do Portal">
+                      <div class="h-full rounded-full bg-violet-500 transition-all duration-700 ease-out" style="width: 88%"></div>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <div class="flex -space-x-2">
+                      <span class="flex size-7 items-center justify-center rounded-full bg-pink-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">JS</span>
+                      <span class="flex size-7 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">AG</span>
+                    </div>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Prazo: 05 nov</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 4. Largo: lg = 2 colunas -->
+              
+              <article class="group relative flex flex-col justify-between gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.99] has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-blue-500/30 dark:border-white/10 dark:bg-slate-900 dark:hover:border-white/20 lg:col-span-2">
+                <div class="flex flex-col gap-3">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="rounded-full bg-pink-50 px-2.5 py-1 text-xs font-medium text-pink-700 dark:bg-pink-500/15 dark:text-pink-300">Marketing</span>
+                    <span class="flex items-center gap-1.5 text-xs font-medium text-slate-600 dark:text-slate-400"><span class="size-2 rounded-full bg-red-500"></span>Alta</span>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold">
+                      <a href="#" class="transition-colors duration-200 after:absolute after:inset-0 focus:outline-none group-hover:text-blue-600 dark:group-hover:text-blue-400">Campanha Black Friday</a>
+                    </h3>
+                    <p class="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-slate-400">Planejamento de anúncios, e-mails e páginas de oferta para a maior data de vendas do ano.</p>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <div>
+                    <div class="mb-1.5 flex items-center justify-between text-xs">
+                      <span class="text-slate-500 dark:text-slate-400">Progresso</span>
+                      <span class="font-semibold tabular-nums">60%</span>
+                    </div>
+                    <div class="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-white/10" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso do projeto Campanha Black Friday">
+                      <div class="h-full rounded-full bg-pink-500 transition-all duration-700 ease-out" style="width: 60%"></div>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <div class="flex -space-x-2">
+                      <span class="flex size-7 items-center justify-center rounded-full bg-amber-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">MR</span>
+                      <span class="flex size-7 items-center justify-center rounded-full bg-blue-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">LP</span>
+                      <span class="flex size-7 items-center justify-center rounded-full bg-violet-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">CF</span>
+                    </div>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Prazo: 20 nov</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 5. Pequeno (1x1) -->
+              
+              <article class="group relative flex flex-col justify-between gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.99] has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-blue-500/30 dark:border-white/10 dark:bg-slate-900 dark:hover:border-white/20">
+                <div class="flex flex-col gap-3">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="rounded-full bg-cyan-50 px-2.5 py-1 text-xs font-medium text-cyan-700 dark:bg-cyan-500/15 dark:text-cyan-300">Infraestrutura</span>
+                    <span class="flex items-center gap-1.5 text-xs font-medium text-slate-600 dark:text-slate-400"><span class="size-2 rounded-full bg-amber-500"></span>Média</span>
+                  </div>
+                  <div>
+                    <h3 class="text-base font-semibold">
+                      <a href="#" class="transition-colors duration-200 after:absolute after:inset-0 focus:outline-none group-hover:text-blue-600 dark:group-hover:text-blue-400">Migração para Nuvem</a>
+                    </h3>
+                    <p class="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-slate-400">Mover servidores e bancos de dados para a nuvem sem interromper o serviço.</p>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <div>
+                    <div class="mb-1.5 flex items-center justify-between text-xs">
+                      <span class="text-slate-500 dark:text-slate-400">Progresso</span>
+                      <span class="font-semibold tabular-nums">30%</span>
+                    </div>
+                    <div class="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-white/10" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso do projeto Migração para Nuvem">
+                      <div class="h-full rounded-full bg-cyan-500 transition-all duration-700 ease-out" style="width: 30%"></div>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <div class="flex -space-x-2">
+                      <span class="flex size-7 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">AG</span>
+                      <span class="flex size-7 items-center justify-center rounded-full bg-amber-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">MR</span>
+                    </div>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Prazo: 10 jan</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 6. Pequeno (1x1) -->
+              
+              <article class="group relative flex flex-col justify-between gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.99] has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-blue-500/30 dark:border-white/10 dark:bg-slate-900 dark:hover:border-white/20">
+                <div class="flex flex-col gap-3">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">Dados</span>
+                    <span class="flex items-center gap-1.5 text-xs font-medium text-slate-600 dark:text-slate-400"><span class="size-2 rounded-full bg-green-500"></span>Baixa</span>
+                  </div>
+                  <div>
+                    <h3 class="text-base font-semibold">
+                      <a href="#" class="transition-colors duration-200 after:absolute after:inset-0 focus:outline-none group-hover:text-blue-600 dark:group-hover:text-blue-400">Painel de Analytics</a>
+                    </h3>
+                    <p class="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-slate-400">Dashboards com métricas de uso para apoiar decisões de produto.</p>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <div>
+                    <div class="mb-1.5 flex items-center justify-between text-xs">
+                      <span class="text-slate-500 dark:text-slate-400">Progresso</span>
+                      <span class="font-semibold tabular-nums">15%</span>
+                    </div>
+                    <div class="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-white/10" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso do projeto Painel de Analytics">
+                      <div class="h-full rounded-full bg-emerald-500 transition-all duration-700 ease-out" style="width: 15%"></div>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <div class="flex -space-x-2">
+                      <span class="flex size-7 items-center justify-center rounded-full bg-violet-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">CF</span>
+                    </div>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Prazo: 28 fev</span>
+                  </div>
+                </div>
+              </article>
+
+              <!-- 7. Largo: lg = 2 colunas -->
+              
+              <article class="group relative flex flex-col justify-between gap-4 rounded-2xl border border-black/5 bg-white p-5 shadow-sm transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-lg active:scale-[0.99] has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-blue-500/30 dark:border-white/10 dark:bg-slate-900 dark:hover:border-white/20 lg:col-span-2">
+                <div class="flex flex-col gap-3">
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700 dark:bg-amber-500/15 dark:text-amber-300">Segurança</span>
+                    <span class="flex items-center gap-1.5 text-xs font-medium text-slate-600 dark:text-slate-400"><span class="size-2 rounded-full bg-amber-500"></span>Média</span>
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold">
+                      <a href="#" class="transition-colors duration-200 after:absolute after:inset-0 focus:outline-none group-hover:text-blue-600 dark:group-hover:text-blue-400">Auditoria de Segurança</a>
+                    </h3>
+                    <p class="mt-1 line-clamp-2 text-sm text-slate-600 dark:text-slate-400">Revisão de acessos, políticas de senha e testes de vulnerabilidade em todos os sistemas internos.</p>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <div>
+                    <div class="mb-1.5 flex items-center justify-between text-xs">
+                      <span class="text-slate-500 dark:text-slate-400">Progresso</span>
+                      <span class="font-semibold tabular-nums">54%</span>
+                    </div>
+                    <div class="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-white/10" role="progressbar" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100" aria-label="Progresso do projeto Auditoria de Segurança">
+                      <div class="h-full rounded-full bg-amber-500 transition-all duration-700 ease-out" style="width: 54%"></div>
+                    </div>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <div class="flex -space-x-2">
+                      <span class="flex size-7 items-center justify-center rounded-full bg-blue-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">LP</span>
+                      <span class="flex size-7 items-center justify-center rounded-full bg-emerald-500 text-[10px] font-semibold text-white ring-2 ring-white dark:ring-slate-900">AG</span>
+                    </div>
+                    <span class="text-xs text-slate-500 dark:text-slate-400">Prazo: 30 nov</span>
+                  </div>
+                </div>
+              </article>
+
             </div>
           </section>
 

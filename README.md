@@ -85,14 +85,3 @@ techflow-dashboard/
 ├── package.json
 └── README.md
 ```
-
-## Dificuldades encontradas
-
-**Revise esta seção e deixe só o que realmente aconteceu com o grupo.**
-
-- **Configurar o Tailwind v4:** a versão nova não usa mais `tailwind.config.js`. Foi preciso entender o plugin do Vite e a diretiva `@custom-variant` para o `dark:` funcionar por classe, e não só pela preferência do sistema.
-- **Grid sem espaços vazios:** combinar `col-span` e `row-span` para o grid fechar certinho em todos os breakpoints exigiu calcular o número de colunas de cada tamanho de tela.
-- **Tema sem "flash" branco:** o tema salvo precisou ser aplicado por um script no `<head>`, antes da página renderizar.
-- **Estrutura do HTML:** ao colar blocos grandes, tags ficaram fora do lugar (como `</section>` dentro de um card), o que quebrava o layout. Aprendemos a conferir o aninhamento das tags.
-- **Modal com animação:** animar o `<dialog>` nativo, que só mostra ou esconde, exigiu controlar a abertura e o fechamento com JavaScript e um atributo de estado.
-- **Git:** o Desktop estava virando um repositório sem querer, o que atrapalhou o início. Resolvemos removendo o `.git` da pasta errada e iniciando o repositório dentro da pasta do projeto.
